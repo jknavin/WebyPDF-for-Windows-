@@ -1,0 +1,30 @@
+{
+  "name": "webypdf",
+  "productName": "WebyPDF",
+  "version": "2.0.0",
+  "description": "WebyPDF - professional offline PDF tools for Windows",
+  "main": "main.js",
+  "author": "WebyPDF",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --x64 --publish never"
+  },
+  "devDependencies": {
+    "electron": "33.2.0",
+    "electron-builder": "25.1.8"
+  },
+  "build": {
+    "appId": "com.webypdf.app",
+    "productName": "WebyPDF",
+    "files": ["main.js", "preload.js", "icon.png", "web/**/*", "package.json"],
+    "win": { "icon": "icon.png", "target": ["nsis", "portable"] },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "artifactName": "WebyPDF-Setup-${version}.${ext}"
+    },
+    "portable": { "artifactName": "WebyPDF-Portable-${version}.${ext}" }
+  }
+}
